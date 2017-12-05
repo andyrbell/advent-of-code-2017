@@ -11,13 +11,4 @@ class Day02Part1 {
     }
 
     fun checksum(lines: List<String>): Int = lines.map { checksum(it) }.sum()
-
-    companion object {
-        @JvmStatic
-        fun main(args: Array<String>) {
-
-            val lines = readLines("src/main/resources/Day02.txt")
-            println("Part 1: " + Day02Part1().checksum(lines))
-        }
-    }
 }
