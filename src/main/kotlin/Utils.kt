@@ -8,4 +8,6 @@ object Utils {
     fun toInts(line: String): List<Int> = line.trim().split("\\s+".toRegex()).map { Integer.valueOf(it) }
 
     fun String.sorted(): String = this.toCharArray().sortedArray().contentToString()
+
+    fun toIntArray(lines: List<String>): IntArray = lines.map { Integer.valueOf(it) }.toIntArray()
 }
