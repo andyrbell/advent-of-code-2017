@@ -5,7 +5,6 @@ class Day02Part2 {
 
         val fields = toInts(line).sorted().reversed()
         val combinations = fields.flatMap { field -> fields.map { Pair(field, it) } }
-        println(combinations)
 
         return combinations
                 .filter { it.first > it.second }
