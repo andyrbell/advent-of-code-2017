@@ -10,4 +10,20 @@ object Utils {
     fun String.sorted(): String = this.toCharArray().sortedArray().contentToString()
 
     fun toIntArray(lines: List<String>): IntArray = lines.map { Integer.valueOf(it) }.toIntArray()
+
+    fun Pair<Int, Int>.neighbours(): List<Pair<Int, Int>> =
+        listOf(
+                Pair(this.first + 1, this.second - 1),
+                Pair(this.first, this.second - 1),
+                Pair(this.first - 1, this.second - 1),
+                Pair(this.first - 1, this.second),
+                Pair(this.first - 1, this.second + 1),
+                Pair(this.first, this.second + 1),
+                Pair(this.first + 1, this.second + 1),
+                Pair(this.first + 1, this.second)
+        )
+
+    enum class Direction {
+        NORTH, SOUTH, WEST, EAST
+    }
 }
