@@ -11,6 +11,8 @@ object Utils {
 
     fun toIntArray(lines: List<String>): IntArray = lines.map { Integer.valueOf(it) }.toIntArray()
 
+    fun toIntArray(line: String): IntArray = toWords(line).map { Integer.valueOf(it) }.toIntArray()
+
     fun Pair<Int, Int>.neighbours(): List<Pair<Int, Int>> =
         listOf(
                 Pair(this.first + 1, this.second - 1),
