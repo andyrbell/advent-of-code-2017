@@ -19,6 +19,10 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-runtime:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-compiler:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-script-runtime:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-script-util:$kotlin_version"
     compile 'com.google.guava:guava:23.0'
 
     testCompile 'junit:junit:4.12'
