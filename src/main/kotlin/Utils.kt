@@ -44,4 +44,12 @@ object Utils {
         subArray.forEachIndexed { index, i -> wrappedSet(start + index, i) }
         return this
     }
+
+    fun IntArray.plus(elements: IntArray, times: Int): IntArray {
+        var result: IntArray = this.copyOf()
+        for (i in 1..(times-1)) result = result.plus(elements)
+        return result
+    }
+
+    fun Int.toHex(): String = String.format("%0${2}x", this)
 }
