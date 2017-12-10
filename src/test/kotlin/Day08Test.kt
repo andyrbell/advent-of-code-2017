@@ -27,7 +27,7 @@ class Day08Test {
 
         map.forEach({key, value -> engine.eval("val $key = $value")})
 
-        val res = engine.eval("map.getValue(a) + 2")
+        val res = engine.eval("a + 2")
 
         println("$res")
         assertEquals(3, res)
