@@ -1,5 +1,6 @@
 buildscript {
     ext.kotlin_version = '1.2.0'
+    ext.assertj_version = '3.8.0'
 
     repositories {
         mavenCentral()
@@ -27,6 +28,7 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    testCompile "org.assertj:assertj-core:$assertj_version"
 }
 
 task wrapper(type: Wrapper) {
