@@ -1,14 +1,14 @@
 import Utils.readLines
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
 class Day11Test {
     @Test
     fun part1() {
-        Assertions.assertThat(Day11Part1().solve("ne,ne,ne")).isEqualTo(3)
-        Assertions.assertThat(Day11Part1().solve("ne,ne,sw,sw")).isEqualTo(0)
-        Assertions.assertThat(Day11Part1().solve("ne,ne,s,s")).isEqualTo(2)
-        Assertions.assertThat(Day11Part1().solve("se,sw,se,sw,sw")).isEqualTo(3)
+        assertThat(Day11Part1().solve("ne,ne,ne")).isEqualTo(3)
+        assertThat(Day11Part1().solve("ne,ne,sw,sw")).isEqualTo(0)
+        assertThat(Day11Part1().solve("ne,ne,s,s")).isEqualTo(2)
+        assertThat(Day11Part1().solve("se,sw,se,sw,sw")).isEqualTo(3)
     }
 
     @Test
