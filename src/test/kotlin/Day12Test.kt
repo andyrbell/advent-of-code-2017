@@ -11,19 +11,9 @@ class Day12Test {
     }
 
     @Test
-    fun parseNode() {
-        val input = "2 <-> 0, 3, 4"
-
-        val regex = """(\d+) <-> (.*)""".toRegex()
-
-        val (nodeId, connectedNodes) = regex.find(input)!!.destructured
-
-        val connectedNodeId = splitCsv(connectedNodes)
-
-        assertThat(nodeId).isEqualTo("2")
-        assertThat(connectedNodeId).contains("0", "3", "4")
-
-
+    fun part2() {
+        val input = readLines("src/test/resources/Day12Test.txt")
+        assertThat(Day12Part2().solve(input)).isEqualTo(2)
     }
 
     @Test
@@ -33,4 +23,10 @@ class Day12Test {
 
     }
 
+    @Test
+    fun solvePart2() {
+        val input = readLines("src/main/resources/Day12.txt")
+        println("Part 2: " + Day12Part2().solve(input))
+
+    }
 }

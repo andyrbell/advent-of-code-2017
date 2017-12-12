@@ -1,6 +1,6 @@
 import Utils.splitCsv
 
-class Day12Part1 {
+class Day12Part2 {
     fun solve(input: List<String>): Int {
         val regex = """(\d+) <-> (.*)""".toRegex()
         val nodes = mutableMapOf<String, MutableSet<String>>()
@@ -15,7 +15,8 @@ class Day12Part1 {
                 nodes.getValue(connectedNodeId).add(nodeId)
             }
         }
-        return countNodes(nodes).size
+        return nodes.keys.map { countNodes(nodes, mutableSetOf(), it) }
+                .toSet().size
     }
 
     private fun countNodes(nodes: MutableMap<String, MutableSet<String>>, visited: MutableSet<String> = mutableSetOf(), nodeId: String = "0"): MutableSet<String> {
