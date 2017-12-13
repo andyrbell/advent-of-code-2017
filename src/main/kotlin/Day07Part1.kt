@@ -1,7 +1,7 @@
 class Day07Part1 {
     fun solve(input: List<String>): String {
         val referenceCount = mutableMapOf<String, Int>()
-        val register = input.map { parseNode(it, referenceCount) }.associateBy { it.name }
+        input.map { parseNode(it, referenceCount) }.associateBy { it.name }
 
         return referenceCount.entries.first { it.value == 1 }.key
     }
