@@ -1,17 +1,18 @@
+
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
-import kotlin.test.assertEquals
 
 class Day05Test {
     @Test
     fun part1() {
         val input = intArrayOf(0, 3, 0, 1, -3)
-        assertEquals(5, Day05Part1().solve(input))
+        assertThat(Day05Part1().solve(input)).isEqualTo(5)
     }
 
     @Test
     fun part2() {
         val input = intArrayOf(0, 3, 0, 1, -3)
-        assertEquals(10, Day05Part2().solve(input))
+        assertThat(Day05Part2().solve(input)).isEqualTo(10)
     }
 
     @Test
