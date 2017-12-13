@@ -15,6 +15,10 @@ object Utils {
 
     fun splitCsv(line: String): List<String> = line.trim().split(""",\s*""".toRegex())
 
+    fun toPair(line: String): Pair<Int, Int> = line.trim().split(""":\s""".toRegex())
+                                                            .map { Integer.valueOf(it) }
+                                                            .let { list -> Pair(list[0], list[1]) }
+
     fun Pair<Int, Int>.neighbours(): List<Pair<Int, Int>> =
         listOf(
                 Pair(this.first + 1, this.second - 1),
