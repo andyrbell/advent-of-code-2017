@@ -1,5 +1,4 @@
 import Utils.readLines
-import Utils.splitCsv
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
