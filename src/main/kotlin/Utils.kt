@@ -56,4 +56,10 @@ object Utils {
     }
 
     fun Int.toHex(): String = String.format("%0${2}x", this)
+
+    fun toBits(s: String): String = String.format("%4s", Integer.toBinaryString(Integer.parseInt(s, 16))).replace(' ', '0')
+
+    fun toBits(c: Char): String = toBits(Character.toString(c))
+
+    fun toBitString(s: String): String = s.toCharArray().map { toBits(it) }.joinToString(separator = "")
 }
