@@ -1,24 +1,35 @@
+import Utils.adjacentNeighbours
+
 class Day14Part2 {
     fun solve(input: String): Int {
         val grid = (0..127).map { Day10Part2().solve("$input-$it") }
                 .map { Utils.toBitString(it) }
-                .map { it.chars().toArray()!! }
+                .map { it.toCharArray().map { Integer.valueOf(Character.toString(it)) } }
                 .toTypedArray()
 
-        val regions = mutableMapOf<Pair<Int,Int>, Set<Pair<Int,Int>>>()
+
+        val usedGrid = mutableSetOf<Pair<Int,Int>>()
+
         for (y in 0..127) {
             (0..127)
-                    .filter { grid[y][it] == 1 }
-                    .forEach {
-                        // find used neighbours
-
-                        // any neighbours in existing regions?
-                        // add to regions
-                        // else
-                        // add new region
-                    }
+                    .filter { x -> grid[y][x] == 1 }
+                    .forEach { x -> usedGrid.add(Pair(x, y)) }
         }
+        return usedGrid.map { countNodes(usedGrid, mutableSetOf(), it) }
+                .toSet().size
+    }
 
-        return regions.keys.size
+    private fun countNodes(usedGrid: MutableSet<Pair<Int, Int>>, visited: MutableSet<Pair<Int, Int>> = mutableSetOf(), nodeId: Pair<Int, Int> = Pair(0, 0)): MutableSet<Pair<Int, Int>> {
+        return when (visited.contains(nodeId)) {
+            true -> visited
+            false -> {
+                visited.add(nodeId)
+                return nodeId.adjacentNeighbours()
+                        .filter { usedGrid.contains(it) }
+                        .map { countNodes(usedGrid, visited, it) }
+                        .filter { it.isNotEmpty() }
+                        .reduce { x, y -> x.plus(y).toMutableSet() }
+            }
+        }
     }
 }

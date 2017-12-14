@@ -31,6 +31,16 @@ object Utils {
                 Pair(this.first + 1, this.second)
         )
 
+    fun Pair<Int, Int>.adjacentNeighbours(): List<Pair<Int, Int>> =
+            listOf(
+                    Pair(this.first, this.second - 1),
+                    Pair(this.first, this.second + 1),
+                    Pair(this.first - 1, this.second),
+                    Pair(this.first + 1, this.second)
+            )
+                    .filter { it.first in 0..127 }
+                    .filter { it.second in 0..127 }
+
     enum class Direction {
         NORTH, SOUTH, WEST, EAST
     }
