@@ -55,4 +55,8 @@ An attempt at solving http://adventofcode.com/2017[Advent of Code 2017] using ht
 |https://adventofcode.com/2017/day/13[Day 13: Packet Scanners]
 |https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day13Part1.kt[Part 1]
  https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day13Part2.kt[Part 2]
+
+|https://adventofcode.com/2017/day/14[Day 14: Disk Defragmentation]
+|https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day14Part1.kt[Part 1]
+// https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day14Part2.kt[Part 2]
 |===
