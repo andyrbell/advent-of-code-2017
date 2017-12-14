@@ -38,8 +38,6 @@ object Utils {
                     Pair(this.first - 1, this.second),
                     Pair(this.first + 1, this.second)
             )
-                    .filter { it.first in 0..127 }
-                    .filter { it.second in 0..127 }
 
     enum class Direction {
         NORTH, SOUTH, WEST, EAST

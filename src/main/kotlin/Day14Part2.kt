@@ -15,20 +15,26 @@ class Day14Part2 {
                     .filter { x -> grid[y][x] == 1 }
                     .forEach { x -> usedGrid.add(Pair(x, y)) }
         }
-        return usedGrid.map { countNodes(usedGrid, mutableSetOf(), it) }
+        val allComponents = usedGrid.map { countNodes(usedGrid, mutableSetOf(), it) }
+        return allComponents
                 .toSet().size
     }
 
     private fun countNodes(usedGrid: MutableSet<Pair<Int, Int>>, visited: MutableSet<Pair<Int, Int>> = mutableSetOf(), nodeId: Pair<Int, Int> = Pair(0, 0)): MutableSet<Pair<Int, Int>> {
         return when (visited.contains(nodeId)) {
-            true -> visited
+            true -> {
+//                println("already visited: $nodeId")
+                visited
+            }
             false -> {
+//                println("adding to visited: $nodeId")
                 visited.add(nodeId)
                 return nodeId.adjacentNeighbours()
                         .filter { usedGrid.contains(it) }
                         .map { countNodes(usedGrid, visited, it) }
-                        .filter { it.isNotEmpty() }
-                        .reduce { x, y -> x.plus(y).toMutableSet() }
+                        .flatten()
+                        .toMutableSet()
+
             }
         }
     }
