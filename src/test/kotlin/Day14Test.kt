@@ -9,6 +9,11 @@ class Day14Test {
     }
 
     @Test
+    fun part2() {
+        assertThat(Day14Part2().solve("flqrgnkx")).isEqualTo(1242)
+    }
+
+    @Test
     fun toBits() {
         assertThat(Utils.toBitString("d4f76bdcbf838f8416ccfa8bc6d1f9e6")).startsWith("11010100")
     }
