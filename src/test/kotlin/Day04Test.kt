@@ -1,6 +1,6 @@
 import Utils.readLines
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
-import kotlin.test.assertEquals
 
 /**
  * --- Day 4: High-Entropy Passphrases ---
@@ -29,18 +29,18 @@ oiii ioii iioi iiio is not valid - any of these words can be rearranged to form 
 class Day04Test {
     @Test
     fun part1() {
-        assertEquals(true, Day04Part1().validate("aa bb cc dd ee"))
-        assertEquals(false, Day04Part1().validate("aa bb cc dd aa"))
-        assertEquals(true, Day04Part1().validate("aa bb cc dd aaa"))
+        assertThat(Day04Part1().validate("aa bb cc dd ee")).isTrue()
+        assertThat(Day04Part1().validate("aa bb cc dd aa")).isFalse()
+        assertThat(Day04Part1().validate("aa bb cc dd aaa")).isTrue()
     }
 
     @Test
     fun part2() {
-        assertEquals(true, Day04Part2().validate("abcde fghij"))
-        assertEquals(false, Day04Part2().validate("abcde xyz ecdab"))
-        assertEquals(true, Day04Part2().validate("a ab abc abd abf abj"))
-        assertEquals(true, Day04Part2().validate("iiii oiii ooii oooi oooo"))
-        assertEquals(false, Day04Part2().validate("oiii ioii iioi iiio"))
+        assertThat(Day04Part2().validate("abcde fghij")).isTrue()
+        assertThat(Day04Part2().validate("abcde xyz ecdab")).isFalse()
+        assertThat(Day04Part2().validate("a ab abc abd abf abj")).isTrue()
+        assertThat(Day04Part2().validate("iiii oiii ooii oooi oooo")).isTrue()
+        assertThat(Day04Part2().validate("oiii ioii iioi iiio")).isFalse()
     }
 
     @Test
