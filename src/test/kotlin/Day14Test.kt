@@ -23,4 +23,9 @@ class Day14Test {
         println("Part 1: " + Day14Part1().solve("ljoxqyyw"))
 
     }
-}
+
+    @Test
+    fun solvePart2() {
+        println("Part 2: " + Day14Part2().solve("ljoxqyyw"))
+
+    }}

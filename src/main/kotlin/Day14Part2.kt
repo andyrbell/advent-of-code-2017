@@ -22,19 +22,14 @@ class Day14Part2 {
 
     private fun countNodes(usedGrid: MutableSet<Pair<Int, Int>>, visited: MutableSet<Pair<Int, Int>> = mutableSetOf(), nodeId: Pair<Int, Int> = Pair(0, 0)): MutableSet<Pair<Int, Int>> {
         return when (visited.contains(nodeId)) {
-            true -> {
-//                println("already visited: $nodeId")
-                visited
-            }
+            true -> visited
             false -> {
-//                println("adding to visited: $nodeId")
                 visited.add(nodeId)
-                return nodeId.adjacentNeighbours()
+                return visited.plus(nodeId.adjacentNeighbours()
                         .filter { usedGrid.contains(it) }
                         .map { countNodes(usedGrid, visited, it) }
-                        .flatten()
+                        .flatten())
                         .toMutableSet()
-
             }
         }
     }
