@@ -1,5 +1,4 @@
 import java.io.File
-
 object Utils {
     fun readLines(filename: String) : List<String> = File(filename).bufferedReader().readLines()
 
@@ -31,13 +30,20 @@ object Utils {
                 Pair(this.first + 1, this.second)
         )
 
-    fun Pair<Int, Int>.adjacentNeighbours(): List<Pair<Int, Int>> =
-            listOf(
-                    Pair(this.first, this.second - 1),
-                    Pair(this.first, this.second + 1),
-                    Pair(this.first - 1, this.second),
-                    Pair(this.first + 1, this.second)
-            )
+    fun Pair<Int, Int>.adjacentNeighbours(): List<Pair<Int, Int>> {
+        val neighbours = mutableListOf(
+                Pair(this.first, this.second - 1),
+                Pair(this.first, this.second + 1),
+                Pair(this.first - 1, this.second),
+                Pair(this.first + 1, this.second)
+        )
+
+        if (this.first == 127) {
+            neighbours.add(Pair(0, this.second + 1))
+        }
+
+        return neighbours
+    }
 
     enum class Direction {
         NORTH, SOUTH, WEST, EAST
@@ -70,4 +76,7 @@ object Utils {
     fun toBits(c: Char): String = toBits(Character.toString(c))
 
     fun toBitString(s: String): String = s.toCharArray().map { toBits(it) }.joinToString(separator = "")
+
+    fun toBitString(l: Long): String = java.lang.Long.toBinaryString(l).padStart(32, '0')
 }
+
