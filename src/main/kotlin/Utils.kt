@@ -78,5 +78,29 @@ object Utils {
     fun toBitString(s: String): String = s.toCharArray().map { toBits(it) }.joinToString(separator = "")
 
     fun toBitString(l: Long): String = java.lang.Long.toBinaryString(l).padStart(32, '0')
+
+    fun String.spin(size: Int): String = takeLast(size) + take(length - size)
+
+    fun String.exchange(x: Int, y: Int): String {
+        val xChar = get(x)
+        val yChar = get(y)
+
+        val chars = toCharArray()
+        chars[y] = xChar
+        chars[x] = yChar
+
+        return String(chars)
+    }
+
+    fun String.partner(x: Char, y: Char): String {
+        val xIdx = indexOf(x)
+        val yIdx = indexOf(y)
+
+        val chars = toCharArray()
+        chars[xIdx] = y
+        chars[yIdx] = x
+
+        return String(chars)
+    }
 }
 
