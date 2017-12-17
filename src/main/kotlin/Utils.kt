@@ -1,4 +1,5 @@
 import java.io.File
+
 object Utils {
     fun readLines(filename: String) : List<String> = File(filename).bufferedReader().readLines()
 
@@ -15,20 +16,20 @@ object Utils {
     fun splitCsv(line: String): List<String> = line.trim().split(""",\s*""".toRegex())
 
     fun toPair(line: String): Pair<Int, Int> = line.trim().split(""":\s""".toRegex())
-                                                            .map { Integer.valueOf(it) }
-                                                            .let { list -> Pair(list[0], list[1]) }
+            .map { Integer.valueOf(it) }
+            .let { list -> Pair(list[0], list[1]) }
 
     fun Pair<Int, Int>.neighbours(): List<Pair<Int, Int>> =
-        listOf(
-                Pair(this.first + 1, this.second - 1),
-                Pair(this.first, this.second - 1),
-                Pair(this.first - 1, this.second - 1),
-                Pair(this.first - 1, this.second),
-                Pair(this.first - 1, this.second + 1),
-                Pair(this.first, this.second + 1),
-                Pair(this.first + 1, this.second + 1),
-                Pair(this.first + 1, this.second)
-        )
+            listOf(
+                    Pair(this.first + 1, this.second - 1),
+                    Pair(this.first, this.second - 1),
+                    Pair(this.first - 1, this.second - 1),
+                    Pair(this.first - 1, this.second),
+                    Pair(this.first - 1, this.second + 1),
+                    Pair(this.first, this.second + 1),
+                    Pair(this.first + 1, this.second + 1),
+                    Pair(this.first + 1, this.second)
+            )
 
     fun Pair<Int, Int>.adjacentNeighbours(): List<Pair<Int, Int>> {
         val neighbours = mutableListOf(
@@ -81,6 +82,12 @@ object Utils {
 
     fun String.spin(size: Int): String = takeLast(size) + take(length - size)
 
+    fun spin(chars: CharArray, size: Int): CharArray {
+        val copy = CharArray(chars.size)
+        (0..(chars.size - 1)).forEach { copy[it] = chars[(it + chars.size - size) % chars.size] }
+        return copy
+    }
+
     fun String.exchange(x: Int, y: Int): String {
         val xChar = get(x)
         val yChar = get(y)
@@ -90,6 +97,16 @@ object Utils {
         chars[x] = yChar
 
         return String(chars)
+    }
+
+    fun exchange(chars: CharArray, x: Int, y: Int): CharArray {
+        val xChar = chars[x]
+        val yChar = chars[y]
+
+        chars[y] = xChar
+        chars[x] = yChar
+
+        return chars
     }
 
     fun String.partner(x: Char, y: Char): String {
@@ -102,5 +119,16 @@ object Utils {
 
         return String(chars)
     }
+
+    fun partner(chars: CharArray, x: Char, y: Char): CharArray {
+        val xIdx = chars.indexOf(x)
+        val yIdx = chars.indexOf(y)
+
+        chars[xIdx] = y
+        chars[yIdx] = x
+
+        return chars
+    }
 }
+
 
