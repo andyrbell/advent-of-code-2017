@@ -22,7 +22,23 @@ class Day16Part2 {
         })
     }
 
+    tailrec fun findCycleSize(moves: List<String>, positions: CharArray, original: CharArray, repetitions: Int = 1): Int {
+        if (repetitions % 10_000 == 0) println("looking for cycleSize: $repetitions")
+
+        val result = solve(moves, positions)
+
+        return when (result.contentEquals(original)) {
+            true -> repetitions
+            false -> findCycleSize(moves, result, original, repetitions + 1)
+        }
+    }
+
     fun solve(moves: List<String>, positions: CharArray, times: Int): CharArray {
-        return (1..times).fold(positions, { acc, i -> if (i % 10_000 == 0) println(i); solve(moves, acc)})
+
+        val cycleSize = findCycleSize(moves, positions, positions.copyOf())
+
+        println("cycleSize: $cycleSize")
+
+        return (1..(times % cycleSize)).fold(positions, { acc, i -> if (i % 10_000 == 0) println(i); solve(moves, acc)})
     }
 }

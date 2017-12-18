@@ -25,6 +25,6 @@ class Day16Test {
     @Test
     fun solvePart2() {
         val input = splitCsv(readLines("src/main/resources/Day16.txt").get(0))
-        println("Part 2: " + Day16Part2().solve(input, "abcdefghijklmnop".toCharArray(), 1_000_000_000).toString())
+        println("Part 2: " + Day16Part2().solve(input, "abcdefghijklmnop".toCharArray(), 1_000_000_000).toList())
     }
 }
