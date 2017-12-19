@@ -63,4 +63,21 @@ An attempt at solving http://adventofcode.com/2017[Advent of Code 2017] using ht
 |https://adventofcode.com/2017/day/15[Day 15: Dueling Generators]
 |https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day15Part1.kt[Part 1]
  https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day15Part2.kt[Part 2]
+
+|https://adventofcode.com/2017/day/16[Day 16: Permutation Promenade]
+|https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day16Part1.kt[Part 1]
+ https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day16Part2.kt[Part 2]
+
+|https://adventofcode.com/2017/day/17[Day 17: Spinlock]
+|
+//https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day17Part1.kt[Part 1]
+// https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day17Part2.kt[Part 2]
+
+|https://adventofcode.com/2017/day/18[Day 18: Duet]
+|https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day18Part1.kt[Part 1]
+// https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day18Part2.kt[Part 2]
+
+|https://adventofcode.com/2017/day/19[Day 19: A Series of Tubes]
+|https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day19Part1.kt[Part 1]
+ https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day19Part2.kt[Part 2]
 |===
