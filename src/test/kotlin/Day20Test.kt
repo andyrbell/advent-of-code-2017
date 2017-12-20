@@ -10,6 +10,12 @@ class Day20Test {
     }
 
     @Test
+    fun part2() {
+        val input = readLines("src/test/resources/Day20Test2.txt")
+        assertThat(Day20Part2().solve(input)).isEqualTo(1)
+    }
+
+    @Test
     fun parse() {
         val input = readLines("src/test/resources/Day20Test.txt")
         assertThat(Day20Part1().parse(input[0]))
@@ -25,4 +31,9 @@ class Day20Test {
         val input = readLines("src/main/resources/Day20.txt")
         println("Part 1: " + Day20Part1().solve(input))
     }
-}
+
+    @Test
+    fun solvePart2() {
+        val input = readLines("src/main/resources/Day20.txt")
+        println("Part 2: " + Day20Part2().solve(input))
+    }}
