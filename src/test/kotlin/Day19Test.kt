@@ -25,4 +25,5 @@ class Day19Test {
     fun solvePart2() {
         val input = readLines("src/main/resources/Day19.txt")
         println("Part 2: " + Day19Part2().solve(input))
-    }}
+    }
+}

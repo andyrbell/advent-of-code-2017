@@ -129,6 +129,11 @@ object Utils {
 
         return chars
     }
+
+    fun TripInt.plus(other: TripInt): TripInt {
+        return Triple(first + other.first, second + other.second, third + other.third)
+    }
 }
 
+typealias TripInt = Triple<Int, Int, Int>
 
