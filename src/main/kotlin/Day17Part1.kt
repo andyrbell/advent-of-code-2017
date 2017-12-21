@@ -10,10 +10,12 @@ class Day17Part1 {
 
     data class CircularBuffer(private val step: Int, private val buffer: MutableList<Int> = mutableListOf(0), private var index: Int = 0) {
         fun add(value: Int) {
-            if (value < 10) println("$value: $buffer")
+            if (value <= 10) println("$value: $buffer")
             val newIndex = ((index + step) % buffer.size) + 1
             buffer.add(newIndex, value)
             index = newIndex
+
+            if (value == 2017) println("$value: $buffer")
         }
 
         fun next(): Int = buffer[(index + 1) % buffer.size]
