@@ -12,9 +12,8 @@ class Day23Test {
 
     @Test
     fun solvePart2() {
-        val input = readLines("src/main/resources/Day23_optimised.txt")
-        println("Part 2: " + Day23Part2().solve(input))
+        val b = 106500
+        val c = 123500
+        println("Part 2: " + Day23Part2().solve(b, c))
     }
-
-
 }
