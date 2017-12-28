@@ -133,6 +133,12 @@ object Utils {
     fun TripLong.plus(other: TripLong): TripLong {
         return Triple(first + other.first, second + other.second, third + other.third)
     }
+
+    data class Matrix(val values: List<String>) {
+
+        fun vFlip(): Matrix = Matrix(values.map { it.reversed() })
+        fun hFlip(): Matrix = Matrix(values.reversed())
+    }
 }
 
 typealias TripLong = Triple<Long, Long, Long>
