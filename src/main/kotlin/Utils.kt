@@ -1,3 +1,4 @@
+
 import java.io.File
 
 object Utils {
@@ -134,10 +135,40 @@ object Utils {
         return Triple(first + other.first, second + other.second, third + other.third)
     }
 
-    data class Matrix(val values: List<String>) {
+    data class Matrix(private val values: List<String>) {
+
+        private val size = values.size
+        private val noOfLayers = Math.floorDiv(size, 2)
 
         fun vFlip(): Matrix = Matrix(values.map { it.reversed() })
         fun hFlip(): Matrix = Matrix(values.reversed())
+        fun rotate90(): Matrix {
+            val newValues = values.map { it.toCharArray() }
+
+            (0..noOfLayers).forEach { first ->
+                val last = size - first - 1
+
+                (first until last).forEach { element ->
+                    val offset = element - first
+
+                    val top = newValues[first][element]
+                    val right = newValues[element][last]
+                    val bottom = newValues[last][last-offset]
+                    val left = newValues[last-offset][first]
+
+                    newValues[first][element] = left
+                    newValues[element][last] = top
+                    newValues[last][last-offset] = right
+                    newValues[last-offset][first] = bottom
+                }
+            }
+
+            return Matrix(newValues.map { String(it) })
+        }
+
+        fun rotate180(): Matrix = rotate90().rotate90()
+
+        fun rotate270(): Matrix = rotate180().rotate90()
     }
 }
 
