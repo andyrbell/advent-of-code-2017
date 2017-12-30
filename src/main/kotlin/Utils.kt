@@ -135,7 +135,9 @@ object Utils {
         return Triple(first + other.first, second + other.second, third + other.third)
     }
 
-    data class Matrix(private val values: List<String>) {
+    data class Matrix(val values: List<String>) {
+
+        constructor(vararg elements: String): this(elements.toList())
 
         private val size = values.size
         private val noOfLayers = Math.floorDiv(size, 2)
@@ -183,6 +185,42 @@ object Utils {
                 rotate270().hFlip(),
                 rotate270().vFlip()
         )
+
+        fun split(): List<Matrix> = when {
+            size % 2 == 0 -> splitBy2()
+            size % 3 == 0 -> splitBy3()
+            else -> throw IllegalStateException("Size $size not divisible by 2 or 3")
+        }
+
+        fun splitBy2(): List<Matrix> {
+            return (0 until size step 2).flatMap { y ->
+                (0 until size step 2).map { x ->
+                    Matrix(listOf(values[y].substring(x, x + 2), values[y + 1].substring(x, x + 2)))
+                }
+            }
+        }
+
+        fun splitBy3(): List<Matrix> {
+            return (0 until size step 3).flatMap { y ->
+                (0 until size step 3).map { x ->
+                    Matrix(listOf(values[y].substring(x, x + 3), values[y + 1].substring(x, x + 3), values[y + 2].substring(x, x + 3)))
+                }
+            }
+        }
+    }
+
+    fun List<Matrix>.join(): Matrix {
+        val rowSize = Math.sqrt(size.toDouble()).toInt()
+        val initial = (0 until size).map { "" }.toMutableList()
+
+        val values = foldIndexed(initial, { matrixIndex, acc, matrix ->
+            matrix.values.forEachIndexed { matrixElementIndex, s ->
+                val offset = Math.floorDiv(matrixIndex, rowSize) * rowSize
+                acc.set(matrixElementIndex + offset, acc.get(matrixElementIndex + offset) + s)
+            }
+            acc
+        })
+        return Matrix(values)
     }
 }
 
