@@ -169,6 +169,20 @@ object Utils {
         fun rotate180(): Matrix = rotate90().rotate90()
 
         fun rotate270(): Matrix = rotate180().rotate90()
+
+        fun allTransforms(): Set<Matrix> = setOf(
+                vFlip(),
+                hFlip(),
+                rotate90(),
+                rotate180(),
+                rotate270(),
+                rotate90().hFlip(),
+                rotate90().vFlip(),
+                rotate180().hFlip(),
+                rotate180().vFlip(),
+                rotate270().hFlip(),
+                rotate270().vFlip()
+        )
     }
 }
 
