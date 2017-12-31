@@ -268,4 +268,10 @@ class Day21Test {
         val input = readLines("src/main/resources/Day21.txt")
         println("Part 1: " + Day21Part1.solve(input, 5))
     }
+
+    @Test
+    fun solvePart2() {
+        val input = readLines("src/main/resources/Day21.txt")
+        println("Part 2: " + Day21Part1.solve(input, 18))
+    }
 }

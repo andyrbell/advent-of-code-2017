@@ -20,7 +20,6 @@ object Day21Part1 {
     }
 
     tailrec fun fractals(matrix: Matrix, ruleBook: Map<Matrix, Matrix>, iterations: Int): Int {
-        println(matrix)
         return if (iterations == 0) {
             matrix.count()
         } else {
