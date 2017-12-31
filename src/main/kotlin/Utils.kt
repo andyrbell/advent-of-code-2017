@@ -238,3 +238,4 @@ object Utils {
 
 typealias TripLong = Triple<Long, Long, Long>
 
+typealias Component = Pair<Int, Int>

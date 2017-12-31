@@ -1,12 +1,14 @@
 import Utils.plus
 
-object Day24Part1 {
+object Day24Part2 {
     fun solve(input: List<String>): Int {
         val components = parse(input)
 
         val bridges = solve(components)
 
-        return bridges.map { it.reduce { x, y -> x.plus(y)}.let { it.first + it.second } }.max()!!
+        val longestBridges = bridges.groupBy { it.size }.maxBy { it.key }!!.value
+
+        return longestBridges.map { it.reduce { x, y -> x.plus(y)}.let { it.first + it.second } }.max()!!
     }
 
     fun solve(components: List<Component>, bridge: List<Component> = mutableListOf(), port: Int = 0): List<List<Component>> {
@@ -24,7 +26,7 @@ object Day24Part1 {
 
 
     private fun parse(input: List<String>): List<Component> = input.map { it.split("/") }
-                                                                .map { Component(it[0].toInt(), it[1].toInt()) }
+            .map { Component(it[0].toInt(), it[1].toInt()) }
 
 
 }
