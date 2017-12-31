@@ -53,12 +53,6 @@ object Day22Part2 {
         }.flatMap { it }.toMap().toMutableMap())
     }
 
-    private fun turn(state: State): State =
-            when (state.grid.infected(state.position)) {
-                true -> turnRight(state)
-                else -> turnLeft(state)
-            }
-
     private fun turnLeft(state: State): State =
             when (state.direction) {
                 NORTH -> State(state.position, WEST, state.grid)
