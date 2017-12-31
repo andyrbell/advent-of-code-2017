@@ -137,9 +137,10 @@ object Utils {
 
     data class Matrix(val values: List<String>) {
 
+        constructor(line: String): this(line.split("/"))
         constructor(vararg elements: String): this(elements.toList())
 
-        private val size = values.size
+        val size = values.size
         private val noOfLayers = Math.floorDiv(size, 2)
 
         fun vFlip(): Matrix = Matrix(values.map { it.reversed() })
@@ -173,6 +174,7 @@ object Utils {
         fun rotate270(): Matrix = rotate180().rotate90()
 
         fun allTransforms(): Set<Matrix> = setOf(
+                this,
                 vFlip(),
                 hFlip(),
                 rotate90(),
@@ -207,15 +209,23 @@ object Utils {
                 }
             }
         }
+
+        fun count(c: Char = '#'): Int = this.values.map { row -> row.count { element -> element == c } }.sum()
+
+        override fun toString(): String {
+            return values.joinToString(separator = "\n", prefix = "\n")
+        }
     }
 
     fun List<Matrix>.join(): Matrix {
-        val rowSize = Math.sqrt(size.toDouble()).toInt()
-        val initial = (0 until size).map { "" }.toMutableList()
+        if (size == 1) return first()
+
+        val newMatrixSize = Math.sqrt((size * Math.pow(first().size.toDouble(), 2.0))).toInt()
+        val initial = (0 until newMatrixSize).map { "" }.toMutableList()
 
         val values = foldIndexed(initial, { matrixIndex, acc, matrix ->
             matrix.values.forEachIndexed { matrixElementIndex, s ->
-                val offset = Math.floorDiv(matrixIndex, rowSize) * rowSize
+                val offset = Math.floorDiv(matrixIndex * matrix.size, newMatrixSize) * matrix.size
                 acc.set(matrixElementIndex + offset, acc.get(matrixElementIndex + offset) + s)
             }
             acc

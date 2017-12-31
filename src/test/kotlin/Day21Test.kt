@@ -1,5 +1,6 @@
 import Utils.Matrix
 import Utils.join
+import Utils.readLines
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
@@ -128,6 +129,7 @@ class Day21Test {
         val rotated2x2By90vflip = Matrix("02", "13")
 
         val expected = setOf(
+                matrix2x2,
                 rotated2x2By90,
                 rotated2x2By180,
                 rotated2x2By270,
@@ -220,5 +222,50 @@ class Day21Test {
                 "234567890"))
 
         assertThat(matrices.join()).isEqualTo(matrix9x9)
+    }
+
+    @Test
+    fun join() {
+        val matrices = listOf(
+                Matrix("##.", "#..", "..."),// 0 0 -> 0, 0 1 -> 1, 0 2 -> 2
+                Matrix("##.", "#..", "..."),// 1 0 -> 0, 1 1 -> 1, 1 2 -> 2
+                Matrix("##.", "#..", "..."),// 2 0 -> 3, 2 1 -> 4, 2 2 -> 5
+                Matrix("##.", "#..", "...") // 3 0 -> 3, 3 1 -> 4. 3 2 -> 5     floor(i / rowSize) * rowSize
+        )
+        val matrix6x6 = Matrix(listOf(
+                "##.##.",
+                "#..#..",
+                "......",
+                "##.##.",
+                "#..#..",
+                "......"))
+
+        assertThat(matrices.join()).isEqualTo(matrix6x6)
+    }
+
+    @Test
+    fun parseMatrix() {
+        val matrix = Matrix("#..#/..../..../#..#")
+        val expected = Matrix("#..#", "....", "....", "#..#")
+
+        assertThat(matrix).isEqualTo(expected)
+    }
+
+    @Test
+    fun count() {
+        val matrix = Matrix("#..#/..../..../#..#")
+        assertThat(matrix.count()).isEqualTo(4)
+    }
+
+    @Test
+    fun part1() {
+        val input = readLines("src/test/resources/Day21Test.txt")
+        assertThat(Day21Part1.solve(input, 2)).isEqualTo(12)
+    }
+
+    @Test
+    fun solvePart1() {
+        val input = readLines("src/main/resources/Day21.txt")
+        println("Part 1: " + Day21Part1.solve(input, 5))
     }
 }
