@@ -94,4 +94,8 @@ An attempt at solving http://adventofcode.com/2017[Advent of Code 2017] using ht
 |https://adventofcode.com/2017/day/23[Day 23: Coprocessor Conflagration]
 |https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day23Part1.kt[Part 1]
  https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day23Part2.kt[Part 2]
+
+|https://adventofcode.com/2017/day/24[Day 24: Electromagnetic Moat]
+|https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day24Part1.kt[Part 1]
+// https://github.com/andyrbell/advent-of-code-2017/blob/master/src/main/kotlin/Day24Part2.kt[Part 2]
 |===
