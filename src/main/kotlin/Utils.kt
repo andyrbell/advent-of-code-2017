@@ -71,6 +71,8 @@ object Utils {
         return result
     }
 
+    operator fun Pair<Int, Int>.plus(other: Pair<Int, Int>): Pair<Int, Int> = Pair(first + other.first, second + other.second)
+
     fun Int.toHex(): String = String.format("%0${2}x", this)
 
     fun toBits(s: String): String = String.format("%4s", Integer.toBinaryString(Integer.parseInt(s, 16))).replace(' ', '0')
