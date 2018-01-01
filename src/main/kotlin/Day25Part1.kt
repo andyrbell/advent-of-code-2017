@@ -1,7 +1,8 @@
+import Utils.penultimate
+
 object Day25Part1 {
     fun solve(lines: List<String>): Int {
-        val beginInStateRegex = """Begin in state ([A-Z]).""".toRegex()
-        val beginInState = beginInStateRegex.find(lines[0])!!.groups[1]!!.value[0]
+        val beginInState = lines[0].penultimate()
         val stepsRegex = """Perform a diagnostic checksum after (\d+) steps.""".toRegex()
         val steps = stepsRegex.find(lines[1])!!.groups[1]!!.value.toInt()
 
@@ -19,7 +20,7 @@ object Day25Part1 {
         return lines.drop(3)
                 .chunked(10)
                 .associateBy(
-                        { it[0].takeLast(2).first() },
+                        { it[0].penultimate() },
                         { parseCommand(it) }
                 )
     }
@@ -34,8 +35,7 @@ object Day25Part1 {
     private fun parseInstruction(lines: List<String>): Instruction {
         val write = if (lines[0].contains("1")) 1 else 0
         val move = if (lines[1].contains("right")) 1 else -1
-        val nextStateRegex = """.* Continue with state ([A-Z]).""".toRegex()
-        val nextState = nextStateRegex.find(lines[2])!!.groups[1]!!.value[0]
+        val nextState = lines[2].penultimate()
         return Instruction(nextState, write, move)
     }
 

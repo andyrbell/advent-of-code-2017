@@ -234,6 +234,8 @@ object Utils {
         })
         return Matrix(values)
     }
+
+    fun String.penultimate(): Char = takeLast(2).first()
 }
 
 typealias TripLong = Triple<Long, Long, Long>
