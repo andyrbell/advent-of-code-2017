@@ -1,3 +1,4 @@
+import Utils.readLines
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -16,58 +17,33 @@ import kotlin.test.assertEquals
  * 12131415 produces 4.
  */
 class Day01Test {
+
     @Test
-    fun test1() {
-        val input = "1122"
-        assertEquals(3, Day01().part1(input))
+    fun part1() {
+        assertEquals(3, Day01Part1().part1("1122"))
+        assertEquals(4, Day01Part1().part1("1111"))
+        assertEquals(0, Day01Part1().part1("1234"))
+        assertEquals(9, Day01Part1().part1("91212129"))
     }
 
     @Test
-    fun test2() {
-        val input = "1111"
-        assertEquals(4, Day01().part1(input))
+    fun part2() {
+        assertEquals(6, Day01Part2().part2("1212"))
+        assertEquals(0, Day01Part2().part2("1221"))
+        assertEquals(4, Day01Part2().part2("123425"))
+        assertEquals(12, Day01Part2().part2("123123"))
+        assertEquals(4, Day01Part2().part2("12131415"))
     }
 
     @Test
-    fun test3() {
-        val input = "1234"
-        assertEquals(0, Day01().part1(input))
+    fun solvePart1() {
+        val input = readLines("src/main/resources/Day01.txt").first()
+        println("Part 1: " + Day01Part1().part1(input))
     }
 
     @Test
-    fun test4() {
-        val input = "91212129"
-        assertEquals(9, Day01().part1(input))
+    fun solvePart2() {
+        val input = readLines("src/main/resources/Day01.txt").first()
+        println("Part 2: " + Day01Part2().part2(input))
     }
-
-    @Test
-    fun test5() {
-        val input = "1212"
-        assertEquals(6, Day01().part2(input))
-    }
-
-    @Test
-    fun test6() {
-        val input = "1221"
-        assertEquals(0, Day01().part2(input))
-    }
-
-    @Test
-    fun test7() {
-        val input = "123425"
-        assertEquals(4, Day01().part2(input))
-    }
-
-    @Test
-    fun test8() {
-        val input = "123123"
-        assertEquals(12, Day01().part2(input))
-    }
-
-    @Test
-    fun test9() {
-        val input = "12131415"
-        assertEquals(4, Day01().part2(input))
-    }
-
 }
