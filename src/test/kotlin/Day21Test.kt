@@ -87,6 +87,7 @@ class Day21Test {
         val rotated3x3By90vflip = Matrix("147", "258", "369")
 
         val expected = setOf(
+                matrix3x3,
                 rotated3x3By90,
                 rotated3x3By180,
                 rotated3x3By270,
