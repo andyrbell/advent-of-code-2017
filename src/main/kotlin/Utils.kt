@@ -85,12 +85,6 @@ object Utils {
 
     fun String.spin(size: Int): String = takeLast(size) + take(length - size)
 
-    fun spin(chars: CharArray, size: Int): CharArray {
-        val copy = CharArray(chars.size)
-        (0..(chars.size - 1)).forEach { copy[it] = chars[(it + chars.size - size) % chars.size] }
-        return copy
-    }
-
     fun String.exchange(x: Int, y: Int): String {
         val xChar = get(x)
         val yChar = get(y)
@@ -102,16 +96,6 @@ object Utils {
         return String(chars)
     }
 
-    fun exchange(chars: CharArray, x: Int, y: Int): CharArray {
-        val xChar = chars[x]
-        val yChar = chars[y]
-
-        chars[y] = xChar
-        chars[x] = yChar
-
-        return chars
-    }
-
     fun String.partner(x: Char, y: Char): String {
         val xIdx = indexOf(x)
         val yIdx = indexOf(y)
@@ -121,16 +105,6 @@ object Utils {
         chars[yIdx] = x
 
         return String(chars)
-    }
-
-    fun partner(chars: CharArray, x: Char, y: Char): CharArray {
-        val xIdx = chars.indexOf(x)
-        val yIdx = chars.indexOf(y)
-
-        chars[xIdx] = y
-        chars[yIdx] = x
-
-        return chars
     }
 
     fun TripLong.plus(other: TripLong): TripLong {
